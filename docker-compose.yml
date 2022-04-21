@@ -5,8 +5,8 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./mongo-data:/var/lib/mongodb/data
+      - ./mongo:/var/lib/mongodb/data
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_ROOT_USERNAME: root
+      - MONGO_INITDB_ROOT_PASSWORD: example
     restart: always
