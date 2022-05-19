@@ -5,7 +5,7 @@
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template shortnd/nu-rock-stack
+npx create-remix --template shortnd/nu-rock-template
 ```
 
 ## What's in the stack
