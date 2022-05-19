@@ -41,10 +41,14 @@ async function main({ rootDirectory }) {
     fs.rm(path.join(rootDirectory, ".github/PULL_REQUEST_TEMPLATE.md")),
   ]);
 
-  const newEnv = env.replace(
+  let newEnv = env.replace(
     /^SESSION_SECRET=.*$/m,
     `SESSION_SECRET="${getRandomString(16)}"`
   );
+  newEnv = env.replace(
+    new RegExp(escapeRegExp(REPLACER), "g"),
+    APP_NAME
+  )
 
   const prodToml = toml.parse(prodContent);
   prodToml.app = prodToml.app.replace(REPLACER, APP_NAME);
