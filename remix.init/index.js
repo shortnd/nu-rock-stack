@@ -69,6 +69,14 @@ async function main({ rootDirectory }) {
     fs.writeFile(README_PATH, newReadme),
     fs.writeFile(ENV_PATH, newEnv),
     fs.writeFile(PACKAGE_JSON_PATH, newPackageJson),
+    fs.copyFile(
+      path.join(rootDirectory, "remix.init", "gitignore"),
+      path.join(rootDirectory, ".gitignore")
+    ),
+    fs.rm(path.join(rootDirectory, ".github/ISSUE_TEMPLATE"), {
+      recursive: true,
+    }),
+    fs.rm(path.join(rootDirectory, ".github/PULL_REQUEST_TEMPLATE.md")),
   ]);
 
   console.log(
@@ -77,6 +85,9 @@ Setup is almost complete. Follow these steps to finish initialization:
 
 - Start the database:
   npm run docker
+
+- Run setup (this updates the database):
+  npm run setup
 
 - Run the first build (this generates the server you will run):
   npm run build
