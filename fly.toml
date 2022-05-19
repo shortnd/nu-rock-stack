@@ -1,4 +1,4 @@
-app = "nu-rock-template"
+app = "nu-rock-stack"
 
 kill_signal = "SIGINT"
 kill_timeout = 5

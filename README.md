@@ -5,7 +5,7 @@
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template shortnd/nu-rock-template
+npx create-remix --template shortnd/nu-rock-stack
 ```
 
 ## What's in the stack
@@ -91,8 +91,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Create two apps on Fly, one for staging and one for production:
 
   ```sh
-  fly create nu-rock-template
-  fly create nu-rock-template-staging
+  fly create nu-rock-stack
+  fly create nu-rock-stack-staging
   ```
 
 - Initialize Git.
@@ -112,14 +112,14 @@ Prior to your first deployment, you'll need to do a few things:
 - Add a `SESSION_SECRET` to your fly app secrets, to do this you can run the following commands:
 
   ```sh
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app nu-rock-template
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app nu-rock-template-staging
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app nu-rock-stack
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app nu-rock-stack-staging
   ```
 
   > **Note:** When creating the staging secret, you may get a warning from the Fly CLI that looks like this:
   >
   > ```
-  > WARN app flag 'nu-rock-template-staging' does not match app name in config file 'nu-rock-template'
+  > WARN app flag 'nu-rock-stack-staging' does not match app name in config file 'nu-rock-stack'
   > ```
   >
   > This simply means that the current directory contains a config that references the production app we created in the first step. Ignore this warning and proceed to create the secret.
@@ -130,11 +130,11 @@ Prior to your first deployment, you'll need to do a few things:
 <!-- - Create a database for both your staging and production environments. Run the following:
 
   ```sh
-  fly postgres create --name nu-rock-template-db
-  fly postgres attach --postgres-app nu-rock-template-db --app nu-rock-template
+  fly postgres create --name nu-rock-stack-db
+  fly postgres attach --postgres-app nu-rock-stack-db --app nu-rock-stack
 
-  fly postgres create --name nu-rock-template-staging-db
-  fly postgres attach --postgres-app nu-rock-template-staging-db --app nu-rock-template-staging
+  fly postgres create --name nu-rock-stack-staging-db
+  fly postgres attach --postgres-app nu-rock-stack-staging-db --app nu-rock-stack-staging
   ```
 
   > **Note:** You'll get the same warning for the same reason when attaching the staging database that you did in the `fly set secret` step above. No worries. Proceed!
