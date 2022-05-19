@@ -9,7 +9,5 @@ services:
       MONGO_PORT: 27018
     ports:
       - "27018:27018"
-    networks:
-      - databases
-networks:
-  databases: null
+    volumes:
+      - ./mongodb-data:/var/lib/mongodb/data
